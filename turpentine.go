@@ -77,8 +77,14 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 	}
 }
 
+
+
+
 type Turpentine struct {
+
 }
+
+
 
 func (t *Turpentine) run() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
@@ -86,4 +92,11 @@ func (t *Turpentine) run() {
 	http.HandleFunc("/save/", makeHandler(saveHandler))
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+// return Turpentine struct
+func turpentine() *Turpentine {
+	var t Turpentine
+	return &t
+
 }
